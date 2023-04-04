@@ -1,15 +1,22 @@
+INSERT INTO fueltype (id, name)
+VALUES (nextval('fueltype_seq'), 'Diesel'),
+       (nextval('fueltype_seq'), 'Hybrid'),
+       (nextval('fueltype_seq'), 'Flex'),
+       (nextval('fueltype_seq'), 'Ethanol'),
+       (nextval('fueltype_seq'), 'Natural Gas'),
+       (nextval('fueltype_seq'), 'Electric');
+
 INSERT INTO category (id, name)
-VALUES (1, 'Sedan'),
-       (2, 'SUV'),
-       (3, 'Hatchback');
+VALUES (nextval('category_seq'), 'Sedan'),
+       (nextval('category_seq'), 'SUV'),
+       (nextval('category_seq'), 'Hatchback');
 
 INSERT INTO brand (id, name)
-VALUES (1, 'Toyota'),
-       (2, 'Honda'),
-       (3, 'Tesla');
+VALUES (nextval('brand_seq'), 'Toyota'),
+       (nextval('brand_seq'), 'Honda'),
+       (nextval('brand_seq'), 'Tesla');
 
-INSERT INTO car (id, model, year, fueltype, price, description, brand_id, category_id)
-VALUES (1, 'Corolla', 2020, 'Gasoline', 18000, 'Well-maintained used car.', 1, 1),
-       (2, 'Civic', 2019, 'Gasoline', 17000, 'Low mileage, great condition.', 2, 2),
-       (3, 'Model 3', 2021, 'Electric', 45000, 'Like new, electric vehicle.', 3, 3);
-
+INSERT INTO car (id, model, year, fueltype_id, price, description, brand_id, category_id)
+VALUES (nextval('car_seq'), 'Corolla', 2020, 1, 18000, 'Well-maintained used car.', 1, 1),
+       (nextval('car_seq'), 'Civic', 2019, 2, 17000, 'Low mileage, great condition.', 2, 2),
+       (nextval('car_seq'), 'Model 3', 2021, 3, 45000, 'Like new, electric vehicle.', 3, 3);

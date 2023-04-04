@@ -12,11 +12,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category {
+public class FuelType {
 
     @Id
-    @SequenceGenerator(name = "CATEGORY_SEQ", sequenceName = "CATEGORY_SEQ", allocationSize = 1)
-    @GeneratedValue(generator = "CATEGORY_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "FUELTYPE_SEQ", sequenceName = "FUELTYPE_SEQ", allocationSize = 1)
+    @GeneratedValue(generator = "FUELTYPE_SEQ", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
 }

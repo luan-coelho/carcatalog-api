@@ -15,12 +15,13 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @SequenceGenerator(name = "CAR_SEQ", sequenceName = "CAR_SEQ")
+    @SequenceGenerator(name = "CAR_SEQ", sequenceName = "CAR_SEQ", allocationSize = 1)
     @GeneratedValue(generator = "CAR_SEQ", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String model;
     private int year;
-    private String fuelType;
+    @ManyToOne
+    private FuelType fuelType;
     private double price;
     private String description;
     @ManyToOne

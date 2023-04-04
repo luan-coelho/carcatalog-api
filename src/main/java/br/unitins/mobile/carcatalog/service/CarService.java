@@ -9,6 +9,7 @@ import br.unitins.mobile.carcatalog.repository.CategoryRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
@@ -32,7 +33,13 @@ public class CarService {
         return carRepository.findByIdOptional(id).orElseThrow(() -> new NotFoundException("Car not found by id"));
     }
 
+    @Transactional
     public void create(Car car) {
+        validateFields(car);
+        carRepository.persist(car);
+    }
+
+    private void validateFields(Car car) {
         if (car.getBrand() == null || car.getBrand().getId() == null) {
             throw new IllegalArgumentException("Brand cannot be null");
         }
@@ -41,12 +48,12 @@ public class CarService {
             throw new IllegalArgumentException("Category cannot be null");
         }
 
-        Brand brand = brandRepository.findByIdOptional(car.getId()).orElseThrow(() -> new NotFoundException("Car not found by id"));
+        Long brandId = car.getBrand().getId();
+        Brand brand = brandRepository.findByIdOptional(brandId).orElseThrow(() -> new NotFoundException("Car not found by id"));
         car.setBrand(brand);
 
-        Category category = categoryRepository.findByIdOptional(car.getId()).orElseThrow(() -> new NotFoundException("Category not found by id"));
+        Long categoryId = car.getCategory().getId();
+        Category category = categoryRepository.findByIdOptional(categoryId).orElseThrow(() -> new NotFoundException("Category not found by id"));
         car.setCategory(category);
-
-        carRepository.persist(car);
     }
 }

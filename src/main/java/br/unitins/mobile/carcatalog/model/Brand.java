@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Brand {
 
     @Id
-    @SequenceGenerator(name = "BRAND_SEQ", sequenceName = "BRAND_SEQ")
+    @SequenceGenerator(name = "BRAND_SEQ", sequenceName = "BRAND_SEQ", allocationSize = 1)
     @GeneratedValue(generator = "BRAND_SEQ", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
