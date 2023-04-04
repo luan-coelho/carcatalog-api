@@ -23,6 +23,13 @@ public class CarResource {
         return Response.ok(cars).build();
     }
 
+    @Path("/{id}")
+    @GET
+    public Response getById(Long id) {
+        Car car = carService.getById(id);
+        return Response.ok(car).build();
+    }
+
     @POST
     public Response create(Car car) {
         carService.create(car);

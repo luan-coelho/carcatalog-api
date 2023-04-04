@@ -7,6 +7,7 @@ import br.unitins.mobile.carcatalog.model.Category;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,15 @@ public class CarService {
 
     public List<Car> getAll() {
         return cars;
+    }
+
+    public Car getById(Long id) {
+        for (Car car : cars) {
+            if (car.getId() == id) {
+                return car;
+            }
+        }
+        throw new NotFoundException("Car not found by id");
     }
 
     public void create(Car car) {
