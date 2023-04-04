@@ -1,10 +1,10 @@
 INSERT INTO fueltype (id, name)
 VALUES (nextval('fueltype_seq'), 'Diesel'),
-       (nextval('fueltype_seq'), 'Hybrid'),
+       (nextval('fueltype_seq'), 'Híbrido'),
        (nextval('fueltype_seq'), 'Flex'),
-       (nextval('fueltype_seq'), 'Ethanol'),
-       (nextval('fueltype_seq'), 'Natural Gas'),
-       (nextval('fueltype_seq'), 'Electric');
+       (nextval('fueltype_seq'), 'Etanol'),
+       (nextval('fueltype_seq'), 'Gás natural'),
+       (nextval('fueltype_seq'), 'Elétrico');
 
 INSERT INTO category (id, name)
 VALUES (nextval('category_seq'), 'Sedan'),

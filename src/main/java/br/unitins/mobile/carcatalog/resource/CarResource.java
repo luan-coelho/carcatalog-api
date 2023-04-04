@@ -35,4 +35,18 @@ public class CarResource {
         carService.create(car);
         return Response.status(Response.Status.CREATED).build();
     }
+
+    @Path("/{id}")
+    @PUT
+    public Response update(Long id, Car car) {
+        carService.update(id, car);
+        return Response.ok().build();
+    }
+
+    @Path("/{id}")
+    @DELETE
+    public Response delete(Long id) {
+        carService.deleteById(id);
+        return Response.noContent().build();
+    }
 }

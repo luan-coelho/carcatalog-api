@@ -56,4 +56,22 @@ public class CarService {
         Category category = categoryRepository.findByIdOptional(categoryId).orElseThrow(() -> new NotFoundException("Category not found by id"));
         car.setCategory(category);
     }
+
+    @Transactional
+    public void update(Long id, Car car) {
+        if (!carRepository.existsById(id)) {
+            throw new NotFoundException("Car not found by id");
+        }
+        validateFields(car);
+        car.setId(id);
+        carRepository.persist(car);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        if (!carRepository.existsById(id)) {
+            throw new NotFoundException("Car not found by id");
+        }
+        carRepository.deleteById(id);
+    }
 }

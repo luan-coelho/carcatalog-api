@@ -7,4 +7,8 @@ import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CarRepository implements PanacheRepository<Car> {
+
+    public boolean existsById(Long id) {
+        return count("FROM Car WHERE id = ?1", id) > 0;
+    }
 }
