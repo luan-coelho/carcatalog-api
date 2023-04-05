@@ -28,4 +28,15 @@ public class Car {
     private Brand brand;
     @ManyToOne
     private Category category;
+
+    public static Car copyProperties(Car source, Car target) {
+        source.model = target.model;
+        source.year = target.year;
+        source.brand = target.brand;
+        source.category = target.category;
+        source.fuelType = target.fuelType;
+        source.price = target.price;
+        source.description = target.description;
+        return source;
+    }
 }

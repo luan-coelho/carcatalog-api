@@ -59,11 +59,13 @@ public class CarService {
 
     @Transactional
     public void update(Long id, Car car) {
-        if (!carRepository.existsById(id)) {
+        Car savedCar = carRepository.findByIdOptional(id).orElseThrow(() -> new NotFoundException("Car not found by id"));
+
+        if (savedCar == null) {
             throw new NotFoundException("Car not found by id");
         }
         validateFields(car);
-        car.setId(id);
+        car = Car.copyProperties(savedCar, car);
         carRepository.persist(car);
     }
 
