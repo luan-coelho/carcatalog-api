@@ -1,3 +1,6 @@
+INSERT INTO person (id, name, login, password)
+VALUES (nextval('person_seq'), 'Admin', 'admin', 'admin');
+
 INSERT INTO fueltype (id, name)
 VALUES (nextval('fueltype_seq'), 'Diesel'),
        (nextval('fueltype_seq'), 'Híbrido'),
