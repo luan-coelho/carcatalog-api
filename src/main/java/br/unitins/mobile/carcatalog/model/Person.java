@@ -1,5 +1,6 @@
 package br.unitins.mobile.carcatalog.model;
 
+import br.unitins.mobile.carcatalog.dto.RegisterRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,10 @@ public class Person {
     private String name;
     private String login;
     private String password;
+
+    public Person(RegisterRequest request) {
+        this.name = request.name();
+        this.login = request.login();
+        this.password = request.password();
+    }
 }
